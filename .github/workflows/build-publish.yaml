@@ -1,15 +1,15 @@
 name: Build-Publish
+
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      image-name:
+        description: 'Name of image to build and deploy'
+        required: true
 
 env:
   registry: ghcr.io/netwarlan
   branch: ${{ github.head_ref || github.ref_name }}
-
-inputs:
-  image-name:
-    description: 'Name of image to build and deploy'
-    required: true
 
 jobs:
   build-and-publish:
