@@ -6,6 +6,7 @@ on:
       image-name:
         description: 'Name of image to build and deploy'
         required: true
+        type: string
 
 env:
   registry: ghcr.io/netwarlan
