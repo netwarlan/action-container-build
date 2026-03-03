@@ -1,15 +1,36 @@
-# OS files
+# === OS ===
 .DS_Store
 Thumbs.db
 
-# IDE/Editor
+# === IDE / Editor ===
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
 
-# Local testing
+# === Environment / Secrets ===
 .env
-.env.local
+.env.*
+!.env.sample
+!.env.example
+
+# === Logs ===
 *.log
+
+# === Docker ===
+data/
+
+# === Go ===
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+coverage.out
+coverage.html
+
+# === Node.js ===
+node_modules/
+dist/
