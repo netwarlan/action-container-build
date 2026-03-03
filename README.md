@@ -1,5 +1,9 @@
 # Container Build & Publish Action
 
+[![Build](https://img.shields.io/github/actions/workflow/status/netwarlan/action-container-build/version.yaml)](https://github.com/netwarlan/action-container-build/actions)
+[![Release](https://img.shields.io/github/v/release/netwarlan/action-container-build)](https://github.com/netwarlan/action-container-build/releases)
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/QtqKW9xvzK)
+
 A reusable GitHub Actions workflow for building and publishing Docker container images to GitHub Container Registry (GHCR).
 
 ## Features
