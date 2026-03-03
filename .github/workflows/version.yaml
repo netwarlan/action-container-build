@@ -8,11 +8,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-    outputs:
-      new-version: ${{ steps.version.outputs.new-version }}
-      skipped: ${{ steps.version.outputs.skipped }}
-      changelog: ${{ steps.version.outputs.changelog }}
+      contents: write
     steps:
       - uses: actions/checkout@v6
         with:
@@ -25,30 +21,8 @@ jobs:
           git config --file "$RUNNER_TEMP/_github_home/.gitconfig" --add safe.directory /github/workspace
 
       - uses: netwarlan/action-semantic-versioning@v1
-        id: version
         with:
           default-version: 'v1.0.0'
-          dry-run: 'true'
           bump-patch-on-unknown: 'true'
-
-  release:
-    needs: [version]
-    if: needs.version.outputs.new-version != ''
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Create release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CHANGELOG: ${{ needs.version.outputs.changelog }}
-        run: |
-          if [ -n "$CHANGELOG" ]; then
-            gh release create "${{ needs.version.outputs.new-version }}" --notes "$CHANGELOG"
-          else
-            gh release create "${{ needs.version.outputs.new-version }}" --generate-notes
-          fi
+          create-release: 'true'
+          update-floating-tags: 'true'

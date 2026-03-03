@@ -71,6 +71,9 @@ jobs:
 | `dockerfile` | Path to Dockerfile | No | `./Dockerfile` |
 | `context` | Build context path | No | `.` |
 | `platforms` | Target platforms (comma-separated) | No | `linux/amd64` |
+| `version` | Semantic version tag to apply to the image (e.g., `v1.2.3`) | No | `''` |
+| `build-args` | Newline-separated list of build-time variables | No | `''` |
+| `push` | Whether to push the image to the registry | No | `true` |
 
 ## Outputs
 
@@ -87,6 +90,8 @@ Images are automatically tagged based on the branch:
 |--------|------|
 | `main` | `latest`, `<branch>`, `<sha>` |
 | Other | `<branch>`, `<sha>` |
+
+When `version` is provided, the version tag (e.g., `v1.2.3`) is also applied.
 
 ## Requirements
 
